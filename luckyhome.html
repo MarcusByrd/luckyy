@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <title>Lucky 7</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- styling for the dice -->
+<style media="screen" type="text/css">
+  div.dice{
+    float: left;
+    width: 32px;
+    background: lightgray;
+    border: #999 1px solid;
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px;
+  }
+</style>
+
+
+
+    <!-- roll dice function -->
+<script type="text/javascript">
+
+function hideResults() {
+    document.getElementById("results").style.display = "none";
+}
+
+  function rollDice() {
+    var die1 = document.getElementById("die1");
+    var die2 = document.getElementById("die2");
+    var status = document.getElementById("status");
+    var d1 = Math.floor(Math.random() * 6) + 1;
+    var d2 = Math.floor(Math.random() * 6) + 1;
+    var diceTotal = d1 + d2;
+    die1.innerHTML = d1;
+    die2.innerHTML = d2;
+    // status.innerHTML = "You rolled " + diceTotal + "! Sorry -$1";
+    var startingBet = document.getElementById("betInput").value;
+    var bet = startingBet;
+    var betsArray = []
+}
+
+
+
+      var rollCounter = betsArray.length;
+      var highestAmount = Math.max.apply(Math, betsArray);
+      var highestPosition = betsArray.indexOf(highestAmount);
+      var rollsFromHighest = rollCounter - highestPosition;
+
+
+// showing results function for table
+    function showResults() {
+    document.getElementById("results").style.display = "inline";
+    document.getElementById("playButton").innerHTML = "Play Again";
+    document.getElementById("resultsBet").innerHTML = "$" + startingBet +".00";
+    document.getElementById("resultsRollCounter").innerHTML = rollCounter;
+    document.getElementById("resultsHighestHeld").innerHTML = "$" +     highestAmount + ".00";
+    document.getElementById("resultsRollsFromHighest").innerHTML = rollsFromHighest;
+        };
+
+        showResults();
+
+</script>
+
+
+
+
+
+<h1>Lucky Sevens</h1>
+  </head>
+  <body onload="hideResults()">
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<span>Starting Bet:<input type="number" name="Starting Bet" id="betInput" placeholder="$0.00"></span>
+
+<div id="die1" class="dice">0</div>
+<div id="die2" class="dice">0</div>
+
+<button type="button" onclick="rollDice()">Play</button>
+
+<h2 id="status" style="clear:left;"></h2>
+
+<!-- Results table -->
+<div id="results">
+        <table>
+        <caption><h2>Results</h2></caption>
+            <tr>
+                <th>Starting Bet</th>
+                <th id="resultsBet"></th>
+            </tr>
+            <tr>
+                <td>Total Rolls Before Going Broke</td>
+                <td id="resultsRollCounter"></td>
+            </tr>
+            <tr>
+                <td>Highest Amount Won</td>
+                <td id="resultsHighestHeld"></td>
+            </tr>
+            <tr>
+                <td>Roll Count at Highest Amount Won</td>
+                <td id="resultsRollsFromHighest"></td>
+            </tr>
+        </table>
+    </div>
+
+
+  </body>
+</html>
